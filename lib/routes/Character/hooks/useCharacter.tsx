@@ -663,7 +663,6 @@ export function useCharacter(characterFromProps?: ICharacter | undefined) {
       draft.name = previewContentEditable({ value: draft.name });
       draft.lastUpdated = getUnix();
     });
-    console.log(updatedCharacter)
     return updatedCharacter;
   }
 

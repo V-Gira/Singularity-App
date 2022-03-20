@@ -1,7 +1,7 @@
 {
   "name": "singularity",
   "version": "1.0.0",
-  "homepage": "",
+  "homepage": "https://singularity-app.netlify.app/",
   "description": "Singularity is a Virtual Tabletop application based on Fari. License: AGPL-3.0-or-later",
   "author": "V-Jira",
   "license": "AGPL-3.0",
@@ -31,8 +31,8 @@
     "int:start": "concurrently \"cypress open\" \"npm run start\" --success first --kill-others --names \"cypress,server\" ",
     "tsc-and-lint": "npm run tsc && npm run lint",
     "validate": "npm run tsc && npm run lint && npm run test",
-    "deploy:preview": "netlify deploy --site 0",
-    "deploy:prod": "netlify deploy --site 0 --prod",
+    "deploy:preview": "netlify deploy --site c4b066e2-c675-41f7-91f6-6f5f08dbbaf6",
+    "deploy:prod": "netlify deploy --site c4b066e2-c675-41f7-91f6-6f5f08dbbaf6 --prod",
     "chromatic": "chromatic --project-token CHROMATIC_PROJECT_TOKEN --exit-zero-on-changes",
     "clean": "rm -rf node_modules && npm install"
   },

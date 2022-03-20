@@ -91,7 +91,6 @@ export function useSession(props: IProps) {
   useEffect(
     function syncCharacterSheetForMe() {
       const everyone = getEveryone(session);
-      console.log("hi")
       everyone.forEach((player) => {
         if (!player.character) {
           return;
