@@ -17,7 +17,7 @@ export const localhostConfig = {
  * For testing peer-js versions
  */
 export const stagingConfig = {
-  host: "fari-peer-server-staging.herokuapp.com",
+  host: "singularity-peer-server.herokuapp.com",
   secure: true,
 };
 
@@ -25,7 +25,7 @@ export const stagingConfig = {
  * For production environment
  */
 const prodConfig = {
-  host: "fari-peer-server.herokuapp.com",
+  host: "singularity-peer-server.herokuapp.com",
   secure: true,
 };
 
@@ -48,7 +48,7 @@ export function usePeerJS(options: { debug?: boolean }) {
       });
     } else {
       peer.current = new Peer(id, {
-        host: "fari-peer-server.herokuapp.com",
+        host: "singularity-peer-server.herokuapp.com",
         secure: true,
         path: "/peer/connect",
         debug: options.debug ? 3 : 0,
