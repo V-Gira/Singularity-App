@@ -6,7 +6,6 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, useHistory } from "react-router-dom";
-import { AppAnalytics } from "./components/AppAnalytics/AppAnalytics";
 import { AppRouter } from "./components/AppRouter/AppRouter";
 import { previewContentEditable } from "./components/ContentEditable/ContentEditable";
 import { ErrorReport } from "./components/ErrorBoundary/ErrorReport";
@@ -405,7 +404,6 @@ function AppProviders(props: { children: ReactNode }) {
                   "client-context": env.context,
                 }}
               />
-              <AppAnalytics />
               <MyBinderManager />
               {props.children}
             </BrowserRouter>
