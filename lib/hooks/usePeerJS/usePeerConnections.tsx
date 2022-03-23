@@ -1,6 +1,5 @@
 import Peer from "peerjs";
 import { useEffect, useRef, useState } from "react";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { DataTransferObject } from "../../domains/data-transfer-object/DataTransferObject";
 import { IPeerAction } from "./IPeerAction";
 import { usePeerJS } from "./usePeerJS";
@@ -11,7 +10,6 @@ export function usePeerConnections(options: {
   onHostDataReceive: (data: any) => void;
   debug?: boolean;
 }) {
-  const logger = useLogger();
   const { peer, loading } = usePeerJS({ debug: options.debug });
   const connection = useRef<Peer.DataConnection | undefined>(undefined);
   const connectingTimeoutError = useRef<any>();
@@ -58,12 +56,10 @@ export function usePeerConnections(options: {
   function onHostConnectionOpen() {
     setConnectionToHost(connection.current);
     setConnectingToHost(false);
-    logger.debug("usePeerConnections: Connected To Host");
   }
   function onHostConnectionClose() {
     setConnectionToHost(undefined);
     setConnectingToHost(false);
-    logger.debug("usePeerConnections: Disconnected From Host");
   }
   function onHostDataReceive(data: any) {
     const decodedData = DataTransferObject.decode(data);
@@ -82,7 +78,6 @@ export function usePeerConnections(options: {
         if (!id) {
           return;
         }
-        logger.debug("Connection: Setup");
         setConnectingToHost(true);
         setConnectingToHostError(false);
         try {
@@ -95,9 +90,7 @@ export function usePeerConnections(options: {
           connection.current.on("close", onHostConnectionClose);
           connection.current.on("data", onHostDataReceive);
         } catch (error) {
-          logger.error("usePeerConnections.connect: Error", {
-            contexts: { error },
-          });
+          console.log(error)
           setConnectingToHost(false);
           setConnectingToHostError(true);
         }
@@ -109,9 +102,7 @@ export function usePeerConnections(options: {
           const encodedData = DataTransferObject.encode(request);
           connectionToHost?.send(encodedData);
         } catch (error) {
-          logger.error("usePeerConnections.sendToHost: Error", {
-            contexts: { error },
-          });
+          console.log(error)
         }
       },
     },

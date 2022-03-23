@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { useLogger } from "../../../contexts/InjectionsContext/hooks/useLogger";
 import {
   DocumentProcessor,
   IDocumentIndexes,
@@ -17,7 +16,6 @@ export function useMarkdownFile(props: {
     tree: [],
     flat: [],
   });
-  const logger = useLogger();
 
   useEffect(() => {
     load();
@@ -37,7 +35,7 @@ export function useMarkdownFile(props: {
             setMarkdownIndexes(markdownIndexes);
           }
         } catch (error) {
-          logger.error("useMarkdownFile:error", error as any);
+          console.log(error);
         }
       }
     }

@@ -4,7 +4,6 @@ import { previewContentEditable } from "../../components/ContentEditable/Content
 import { PageMeta } from "../../components/PageMeta/PageMeta";
 import { SceneMode, Session } from "../../components/Scene/Scene";
 import { CharactersContext } from "../../contexts/CharactersContext/CharactersContext";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { MyBinderContext } from "../../contexts/MyBinderContext/MyBinderContext";
 import { ScenesContext } from "../../contexts/SceneContext/ScenesContext";
 import { SettingsContext } from "../../contexts/SettingsContext/SettingsContext";
@@ -27,12 +26,7 @@ export const SceneRoute: React.FC<{
   });
   const pageTitle = previewContentEditable({ value: sceneName });
   const history = useHistory();
-  const logger = useLogger();
   const myBinderManager = useContext(MyBinderContext);
-
-  useEffect(() => {
-    logger.track("view_scene");
-  }, []);
 
   useEffect(() => {
     const sceneToLoad = scenesManager.state.scenes.find(

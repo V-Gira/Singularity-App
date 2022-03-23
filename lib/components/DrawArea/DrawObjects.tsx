@@ -16,7 +16,6 @@ import IconButton from "@mui/material/IconButton";
 import Popover from "@mui/material/Popover";
 import { useTheme } from "@mui/material/styles";
 import React, { useEffect, useRef, useState } from "react";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { useTextColors } from "../../hooks/useTextColors/useTextColors";
 import { ColorPicker } from "../ColorPicker/ColorPicker";
 import { AspectRatio } from "./AspectRatio";
@@ -32,7 +31,6 @@ interface IProps {
 
 export const DrawObjects: React.FC<IProps> = (props) => {
   const theme = useTheme();
-  const logger = useLogger();
   const textColors = useTextColors(theme.palette.background.paper);
   const [drawingToolBeforeColorPicker, setDrawingToolBeforeColorPicker] =
     useState<DrawingTool | undefined>(undefined);
@@ -191,8 +189,6 @@ export const DrawObjects: React.FC<IProps> = (props) => {
                     drawingManager.actions.setDrawingTool(
                       DrawingTool.ColorPicker
                     );
-
-                    logger.track("drawing_area.open_color_picker");
                   }}
                 >
                   <PaletteTwoToneIcon
@@ -226,7 +222,6 @@ export const DrawObjects: React.FC<IProps> = (props) => {
                     onChange={(color) => {
                       drawingManager.actions.setColor(color);
                       resetDrawingTool();
-                      logger.track("drawing_area.pick_color");
                     }}
                   />
                 </Popover>
@@ -243,7 +238,6 @@ export const DrawObjects: React.FC<IProps> = (props) => {
                   })}
                   onClick={() => {
                     drawingManager.actions.setDrawingTool(DrawingTool.Move);
-                    logger.track("drawing_area.use_moving_tool");
                   }}
                 >
                   <PanToolTwoToneIcon />
@@ -261,7 +255,6 @@ export const DrawObjects: React.FC<IProps> = (props) => {
                   })}
                   onClick={() => {
                     drawingManager.actions.setDrawingTool(DrawingTool.Remove);
-                    logger.track("drawing_area.use_eraser");
                   }}
                 >
                   <DeleteTwoToneIcon />
@@ -283,7 +276,6 @@ export const DrawObjects: React.FC<IProps> = (props) => {
                   })}
                   onClick={() => {
                     drawingManager.actions.setDrawingTool(DrawingTool.Line);
-                    logger.track("drawing_area.use_line_tool");
                   }}
                 >
                   <GestureTwoToneIcon />
@@ -303,7 +295,6 @@ export const DrawObjects: React.FC<IProps> = (props) => {
                     drawingManager.actions.setDrawingTool(
                       DrawingTool.Rectangle
                     );
-                    logger.track("drawing_area.use_rectangle_tool");
                   }}
                 >
                   <CheckBoxOutlineBlankIcon />
@@ -321,8 +312,6 @@ export const DrawObjects: React.FC<IProps> = (props) => {
                   })}
                   onClick={() => {
                     drawingManager.actions.setDrawingTool(DrawingTool.Ellipse);
-
-                    logger.track("drawing_area.use_ellipse_tool");
                   }}
                 >
                   <RadioButtonUncheckedTwoToneIcon />
@@ -340,7 +329,6 @@ export const DrawObjects: React.FC<IProps> = (props) => {
                   })}
                   onClick={() => {
                     drawingManager.actions.setDrawingTool(DrawingTool.Token);
-                    logger.track("drawing_area.use_token_tool");
                   }}
                 >
                   <FaceTwoToneIcon />
@@ -376,8 +364,6 @@ export const DrawObjects: React.FC<IProps> = (props) => {
                 })}
                 onClick={() => {
                   drawingManager.actions.clear();
-
-                  logger.track("drawing_area.clear_drawing");
                 }}
               >
                 <ClearAllTwoToneIcon />
@@ -392,8 +378,6 @@ export const DrawObjects: React.FC<IProps> = (props) => {
                 })}
                 onClick={() => {
                   drawingManager.actions.undo();
-
-                  logger.track("drawing_area.undo");
                 }}
               >
                 <UndoTwoToneIcon />

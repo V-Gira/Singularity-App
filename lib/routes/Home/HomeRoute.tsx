@@ -13,7 +13,7 @@ import Hidden from "@mui/material/Hidden";
 import { ThemeProvider, useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router";
 // import discord from "../../../images/services/discord.png";
 import lokalise from "../../../images/services/lokalise.png";
@@ -26,7 +26,6 @@ import { FariToolbarMaxWidth, Page } from "../../components/Page/Page";
 import { PageMeta } from "../../components/PageMeta/PageMeta";
 import { Patreon } from "../../components/Patreon/Patreon";
 import { Images } from "../../constants/Images";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { MyBinderContext } from "../../contexts/MyBinderContext/MyBinderContext";
 import { useHighlight } from "../../hooks/useHighlight/useHighlight";
 import { useLightBackground } from "../../hooks/useLightBackground/useLightBackground";
@@ -69,14 +68,9 @@ const sectionsSeparator = "4rem";
 export const HomeRoute: React.FC<{}> = () => {
   const history = useHistory();
   const { t } = useTranslate();
-  const logger = useLogger();
   const lightBackground = useLightBackground();
   const theme = useTheme();
   const myBinderManager = useContext(MyBinderContext);
-
-  useEffect(() => {
-    logger.track("view_home");
-  }, []);
 
   return (
     <Page hideHeaderLogo maxWidth="100vw">
@@ -340,8 +334,6 @@ export const HomeRoute: React.FC<{}> = () => {
                     className={css({ height: "3rem" })}
                     onClick={() => {
                       history.push("/play");
-
-                      logger.track("home.start_online_game");
                     }}
                   >
                     {t("home-route.play-online.button")}
@@ -387,8 +379,6 @@ export const HomeRoute: React.FC<{}> = () => {
                   data-cy="home.play-offline"
                   onClick={() => {
                     history.push("/play-offline");
-
-                    logger.track("home.start_offline_game");
                   }}
                 >
                   {t("home-route.play-offline.button")}

@@ -24,7 +24,6 @@ import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import React, { useState } from "react";
 import { FontFamily } from "../../../../constants/FontFamily";
-import { useLogger } from "../../../../contexts/InjectionsContext/hooks/useLogger";
 import { CharacterSelector } from "../../../../domains/character/CharacterSelector";
 import { IDataCyProps } from "../../../../domains/cypress/types/IDataCyProps";
 import { useLightBackground } from "../../../../hooks/useLightBackground/useLightBackground";
@@ -65,7 +64,6 @@ export function PlayerRow(
 ) {
   const theme = useTheme();
   const { t } = useTranslate();
-  const logger = useLogger();
   const [hover, setHover] = useState(false);
   const mainPointerBlock = CharacterSelector.getCharacterMainPointerBlock(
     props.player.character
@@ -94,7 +92,6 @@ export function PlayerRow(
 
   function handleOnRoll() {
     props.onDiceRoll();
-    logger.track("session.player_reroll_dice");
   }
 
   return (
@@ -270,7 +267,6 @@ export function PlayerRow(
                 );
                 if (confirmed) {
                   props.onPlayerRemove();
-                  logger.track("session.remove_player");
                 }
               }}
               size="large"
@@ -330,7 +326,6 @@ export function PlayerRow(
             onClick={(e) => {
               e.stopPropagation();
               props.onPlayedInTurnOrderChange(!props.player.playedDuringTurn);
-              logger.track("session.change_player_initiative");
             }}
             disabled={!props.permissions.canUpdateInitiative}
             className={css({ padding: "0" })}
@@ -478,8 +473,6 @@ export function PlayerRow(
                       } else {
                         handleOnLoadCharacterSheet();
                       }
-
-                      logger.track("session.open_character_sheet");
                     }}
                   >
                     {hasCharacterSheet ? (
@@ -545,7 +538,6 @@ export function PlayerRow(
                   onClick={() => {
                     setLoadCharacterDialogOpen(false);
                     props.onAssignDuplicateCharacterSheet();
-                    logger.track("session.load_and_duplicate_character");
                   }}
                 >
                   {t(
@@ -563,7 +555,6 @@ export function PlayerRow(
                   onClick={() => {
                     setLoadCharacterDialogOpen(false);
                     props.onAssignOriginalCharacterSheet();
-                    logger.track("session.load_character");
                   }}
                 >
                   {t("player-row.load-character-sheet-dialog.load")}

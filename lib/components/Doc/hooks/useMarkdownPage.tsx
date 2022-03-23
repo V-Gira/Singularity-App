@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import { useLogger } from "../../../contexts/InjectionsContext/hooks/useLogger";
 import { DocumentProcessor } from "../domains/DocumentProcessor";
 
 export function useMarkdownPage(props: {
@@ -8,7 +7,6 @@ export function useMarkdownPage(props: {
   section: string | undefined | null;
   dom: HTMLDivElement | undefined;
 }): ReturnType<typeof DocumentProcessor["getPage"]> {
-  const logger = useLogger();
 
   return useMemo(() => {
     try {
@@ -20,7 +18,7 @@ export function useMarkdownPage(props: {
       });
       return result;
     } catch (error) {
-      logger.error("useMarkdownPage:error", error as any);
+      console.log(error)
       const errorHtml =
         "<h1>Error</h1><p>There was an error processing this document</p>";
       const dom = document.createElement("div");

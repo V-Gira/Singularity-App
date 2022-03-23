@@ -41,7 +41,6 @@ import { Link as RouterLink } from "react-router-dom";
 import { env } from "../../constants/env";
 import { Images } from "../../constants/Images";
 import { useZIndex } from "../../constants/zIndex";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { MyBinderContext } from "../../contexts/MyBinderContext/MyBinderContext";
 import { SettingsContext } from "../../contexts/SettingsContext/SettingsContext";
 import { Icons } from "../../domains/Icons/Icons";
@@ -87,7 +86,6 @@ export const Page: React.FC<{
 
   const myBinderManager = useContext(MyBinderContext);
   const settingsManager = useContext(SettingsContext);
-  const logger = useLogger();
   const zIndex = useZIndex();
 
   const isLive = props.live !== undefined;
@@ -454,7 +452,6 @@ export const Page: React.FC<{
                 onChange={(e) => {
                   const newLanguage = e.target.value as string;
                   i18n.changeLanguage(newLanguage);
-                  logger.setTag("language", newLanguage);
                 }}
                 variant="standard"
               >

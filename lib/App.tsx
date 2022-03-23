@@ -1,6 +1,5 @@
 import CssBaseline from "@mui/material/CssBaseline";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
-import * as Sentry from "@sentry/react";
 import React, { ReactNode, useContext } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
@@ -8,7 +7,6 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, useHistory } from "react-router-dom";
 import { AppRouter } from "./components/AppRouter/AppRouter";
 import { previewContentEditable } from "./components/ContentEditable/ContentEditable";
-import { ErrorReport } from "./components/ErrorBoundary/ErrorReport";
 import { IManagerViewModel, MyBinder } from "./components/MyBinder/MyBinder";
 import { env } from "./constants/env";
 import {
@@ -394,7 +392,6 @@ function AppProviders(props: { children: ReactNode }) {
     >
       <StyledEngineProvider injectFirst>
         <CssBaseline />
-        <Sentry.ErrorBoundary fallback={ErrorReport} showDialog>
           <HelmetProvider>
             <BrowserRouter>
               <Helmet
@@ -408,7 +405,6 @@ function AppProviders(props: { children: ReactNode }) {
               {props.children}
             </BrowserRouter>
           </HelmetProvider>
-        </Sentry.ErrorBoundary>
       </StyledEngineProvider>
     </ThemeProvider>
   );

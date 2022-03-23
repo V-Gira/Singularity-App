@@ -9,7 +9,6 @@ import { previewContentEditable } from "../../components/ContentEditable/Content
 import { FateLabel } from "../../components/FateLabel/FateLabel";
 import { PageMeta } from "../../components/PageMeta/PageMeta";
 import { CharactersContext } from "../../contexts/CharactersContext/CharactersContext";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { MyBinderContext } from "../../contexts/MyBinderContext/MyBinderContext";
 import { SettingsContext } from "../../contexts/SettingsContext/SettingsContext";
 import { ICharacter, ISection } from "../../domains/character/types";
@@ -27,11 +26,8 @@ export const CharacterPrintRoute: React.FC<{
   const settingsManager = useContext(SettingsContext);
   const [character, setCharacter] = useState<ICharacter | undefined>(undefined);
   const myBinderManager = useContext(MyBinderContext);
-  const logger = useLogger();
 
   useEffect(() => {
-    logger.track("character.print");
-
     settingsManager.actions.setThemeModeTemporarily("light");
   }, []);
 

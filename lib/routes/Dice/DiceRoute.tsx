@@ -11,7 +11,6 @@ import { Page } from "../../components/Page/Page";
 import { PageMeta } from "../../components/PageMeta/PageMeta";
 import { Toolbox } from "../../components/Toolbox/Toolbox";
 import { DiceContext } from "../../contexts/DiceContext/DiceContext";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { IDiceRollResult } from "../../domains/dice/Dice";
 import { Font } from "../../domains/font/Font";
 import { Icons } from "../../domains/Icons/Icons";
@@ -25,18 +24,15 @@ export function DiceRoute(props: { pool: boolean }) {
   const [, ...archivedRolls] = rolls;
   const fiveLatestRolls = archivedRolls.slice(0, 5);
   const { t } = useTranslate();
-  const logger = useLogger();
   const diceManager = useContext(DiceContext);
 
   useEffect(
     function onLoad() {
       if (!props.pool) {
-        logger.track("view_dice_page");
         setRollResult(
           diceManager.actions.rollCommandGroups({ listResults: props.pool })
         );
       } else {
-        logger.track("view_dice_pool_page");
       }
       diceManager.actions.setOptions({ listResults: props.pool });
     },

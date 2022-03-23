@@ -1,9 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { previewContentEditable } from "../../components/ContentEditable/ContentEditable";
 import { PageMeta } from "../../components/PageMeta/PageMeta";
 import { SceneMode, Session } from "../../components/Scene/Scene";
 import { CharactersContext } from "../../contexts/CharactersContext/CharactersContext";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { SettingsContext } from "../../contexts/SettingsContext/SettingsContext";
 import { useScene } from "../../hooks/useScene/useScene";
 import { useSession } from "../../hooks/useScene/useSession";
@@ -24,12 +23,6 @@ export const PlayOfflineRoute: React.FC<{
   });
   const sceneName = sceneManager.state.scene?.name ?? "";
   const pageTitle = previewContentEditable({ value: sceneName });
-
-  const logger = useLogger();
-
-  useEffect(() => {
-    logger.track("play_offline_game");
-  }, []);
 
   const { t } = useTranslate();
 

@@ -23,7 +23,6 @@ import { IndexCard } from "../../components/IndexCard/IndexCard";
 import { Page } from "../../components/Page/Page";
 import { PageMeta } from "../../components/PageMeta/PageMeta";
 import { IndexCardCollectionsContext } from "../../contexts/IndexCardCollectionsContext/IndexCardCollectionsContext";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { MyBinderContext } from "../../contexts/MyBinderContext/MyBinderContext";
 import { DragAndDropTypes } from "../../domains/drag-and-drop/DragAndDropTypes";
 import { IIndexCardCollection } from "../../domains/index-card-collection/IndexCardCollectionFactory";
@@ -218,11 +217,9 @@ export const CardCollectionRoute: React.FC<{
   const { t } = useTranslate();
   const theme = useTheme();
   const history = useHistory();
-  const logger = useLogger();
   const myBinderManager = useContext(MyBinderContext);
 
   useEffect(() => {
-    logger.track("card_collection.view");
   }, []);
 
   useEffect(() => {

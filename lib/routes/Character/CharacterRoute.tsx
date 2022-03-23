@@ -7,7 +7,6 @@ import { PageMeta } from "../../components/PageMeta/PageMeta";
 import { Toolbox } from "../../components/Toolbox/Toolbox";
 import { CharactersContext } from "../../contexts/CharactersContext/CharactersContext";
 import { DiceContext } from "../../contexts/DiceContext/DiceContext";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { MyBinderContext } from "../../contexts/MyBinderContext/MyBinderContext";
 import { ICharacter } from "../../domains/character/types";
 import { IDiceRollResult } from "../../domains/dice/Dice";
@@ -28,17 +27,12 @@ export const CharacterRoute: React.FC<{
   const [selectedCharacter, setSelectedCharacter] = useState<
     ICharacter | undefined
   >(undefined);
-  const logger = useLogger();
 
   function handleSetRollResult(result: IDiceRollResult) {
     setRolls((draft) => {
       return [result, ...draft];
     });
   }
-
-  useEffect(() => {
-    logger.track("character.view");
-  }, []);
 
   useEffect(() => {
     const characterToLoad = charactersManager.state.characters.find(

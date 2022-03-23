@@ -1,18 +1,12 @@
 import { css } from "@emotion/css";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import React, { useEffect } from "react";
+import React from "react";
 import { Page } from "../../components/Page/Page";
 import { PageMeta } from "../../components/PageMeta/PageMeta";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { Font } from "../../domains/font/Font";
 
 export const NotFoundRoute: React.FC<{}> = () => {
-  const logger = useLogger();
-
-  useEffect(() => {
-    logger.track("page_not_found");
-  }, []);
 
   return (
     <div>

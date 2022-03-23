@@ -50,7 +50,6 @@ import { FateLabel } from "../../../../components/FateLabel/FateLabel";
 import { CharacterCard } from "../../../../components/Scene/components/PlayerRow/CharacterCard/CharacterCard";
 import { env } from "../../../../constants/env";
 import { CharactersContext } from "../../../../contexts/CharactersContext/CharactersContext";
-import { useLogger } from "../../../../contexts/InjectionsContext/hooks/useLogger";
 import { SettingsContext } from "../../../../contexts/SettingsContext/SettingsContext";
 import {
   CharacterTemplates,
@@ -123,7 +122,6 @@ export const CharacterV3Dialog: React.FC<{
   const showCharacterCard = query.get("card") === "true";
   const defaultAdvanced = query.get("advanced") === "true";
   const isSmall = useMediaQuery(theme.breakpoints.down("md"));
-  const logger = useLogger();
   const characterManager = useCharacter(props.character);
   const settingsManager = useContext(SettingsContext);
   const [advanced, setAdvanced] = useState(defaultAdvanced);
@@ -142,12 +140,10 @@ export const CharacterV3Dialog: React.FC<{
       characterManager.actions.getCharacterWithNewTimestamp();
     props.onSave?.(updatedCharacter!);
     setSavedSnack(true);
-    logger.track("character.save");
   }
 
   function handleOnToggleAdvancedMode() {
     setAdvanced((prev) => !prev);
-    logger.track("character.toggle_advanced_mode");
   }
 
   function onLoadTemplate(newTemplate: ICharacterTemplate) {
@@ -158,7 +154,6 @@ export const CharacterV3Dialog: React.FC<{
       setTab("0");
       characterManager.actions.loadTemplate(newTemplate);
       setAdvanced(false);
-      logger.track("character.load_template", { template: newTemplate });
     }
   }
 

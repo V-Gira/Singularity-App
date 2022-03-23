@@ -34,7 +34,6 @@ import Tooltip from "@mui/material/Tooltip";
 import Typography from "@mui/material/Typography";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { arraySort } from "../../domains/array/arraySort";
 import { LazyState, useLazyState } from "../../hooks/useLazyState/useLazyState";
 import { useTranslate } from "../../hooks/useTranslate/useTranslate";
@@ -84,7 +83,6 @@ export function MyBinder<TFolders extends string>(props: {
   onExportAsTemplate(folder: TFolders, element: IManagerViewModel): void;
 }) {
   const { t } = useTranslate();
-  const logger = useLogger();
   const theme = useTheme();
   const history = useHistory();
   const searchInputRef = React.useRef<HTMLInputElement>(null);
@@ -130,11 +128,6 @@ export function MyBinder<TFolders extends string>(props: {
 
   function handleOnSelect(currentFolder: TFolders, element: IManagerViewModel) {
     props.onSelect(currentFolder, element);
-    logger.track("binder.select", {
-      folder: currentFolder,
-      name: element.name,
-      group: element.group,
-    });
   }
 
   function handleOnSelectOnNewTab(
@@ -142,22 +135,12 @@ export function MyBinder<TFolders extends string>(props: {
     element: IManagerViewModel
   ) {
     props.onSelectOnNewTab(currentFolder, element);
-    logger.track("binder.select-on-new-tab", {
-      folder: currentFolder,
-      name: element.name,
-      group: element.group,
-    });
   }
 
   function handleOnDelete(currentFolder: TFolders, element: IManagerViewModel) {
     setDeletedObject({ folder: currentFolder, element: element });
     setDeletedSnack(true);
     props.onDelete(currentFolder, element);
-    logger.track("binder.delete", {
-      folder: currentFolder,
-      name: element.name,
-      group: element.group,
-    });
   }
 
   function handleOnUndo() {
@@ -173,20 +156,10 @@ export function MyBinder<TFolders extends string>(props: {
     element: IManagerViewModel
   ) {
     props.onDuplicate(currentFolder, element);
-    logger.track("binder.duplicate", {
-      folder: currentFolder,
-      name: element.name,
-      group: element.group,
-    });
   }
 
   function handleOnExport(currentFolder: TFolders, element: IManagerViewModel) {
     props.onExport(currentFolder, element);
-    logger.track("binder.export", {
-      folder: currentFolder,
-      name: element.name,
-      group: element.group,
-    });
   }
 
   function handleOnExportAsTemplate(
@@ -194,11 +167,6 @@ export function MyBinder<TFolders extends string>(props: {
     element: IManagerViewModel
   ) {
     props.onExportAsTemplate(currentFolder, element);
-    logger.track("binder.export-as-template", {
-      folder: currentFolder,
-      name: element.name,
-      group: element.group,
-    });
   }
 
   function handleOnGoBack() {
@@ -212,25 +180,16 @@ export function MyBinder<TFolders extends string>(props: {
       setImportDialogModalEntity(entity);
     }
     event.target.value = "";
-    logger.track("binder.import", {
-      folder: currentFolder,
-    });
   }
 
   function handleOnImportAsNew() {
     props.onImportAddAsNew(currentFolder, importDialogModalEntity);
     setImportDialogModalEntity(undefined);
-    logger.track("binder.import-as-new", {
-      folder: currentFolder,
-    });
   }
 
   function handleOnImportUpdateExisting() {
     props.onImportUpdateExisting(currentFolder, importDialogModalEntity);
     setImportDialogModalEntity(undefined);
-    logger.track("binder.import-update-existing", {
-      folder: currentFolder,
-    });
   }
 
   return (
@@ -462,9 +421,6 @@ export function MyBinder<TFolders extends string>(props: {
                   data-cy={`my-binder.folders.${currentFolder}.new`}
                   onClick={() => {
                     props.onNew(currentFolder);
-                    logger.track("binder.new", {
-                      folder: currentFolder,
-                    });
                   }}
                 >
                   {t("my-binder.elements.new")}

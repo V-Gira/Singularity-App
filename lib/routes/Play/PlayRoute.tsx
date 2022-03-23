@@ -3,7 +3,6 @@ import { previewContentEditable } from "../../components/ContentEditable/Content
 import { PageMeta } from "../../components/PageMeta/PageMeta";
 import { SceneMode, Session } from "../../components/Scene/Scene";
 import { CharactersContext } from "../../contexts/CharactersContext/CharactersContext";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { SettingsContext } from "../../contexts/SettingsContext/SettingsContext";
 import { usePeerConnections } from "../../hooks/usePeerJS/usePeerConnections";
 import { usePeerHost } from "../../hooks/usePeerJS/usePeerHost";
@@ -20,7 +19,6 @@ export const PlayRoute: React.FC<{
     params: { id?: string };
   };
 }> = (props) => {
-  const logger = useLogger();
 
   const idFromParams = props.match.params.id;
   const settingsManager = useContext(SettingsContext);
@@ -100,18 +98,6 @@ export const PlayRoute: React.FC<{
       );
     }
   }, [hostManager.state.connections]);
-
-  useEffect(() => {
-    if (isGM) {
-      logger.track("play_online_game", {
-        as: "gm",
-      });
-    } else {
-      logger.track("play_online_game", {
-        as: "player",
-      });
-    }
-  }, []);
 
   return (
     <>

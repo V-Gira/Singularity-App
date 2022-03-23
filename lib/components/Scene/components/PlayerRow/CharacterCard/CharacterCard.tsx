@@ -9,7 +9,6 @@ import Paper from "@mui/material/Paper";
 import { useTheme } from "@mui/material/styles";
 import Tooltip from "@mui/material/Tooltip";
 import React from "react";
-import { useLogger } from "../../../../../contexts/InjectionsContext/hooks/useLogger";
 import { ICharacter } from "../../../../../domains/character/types";
 import { IDiceRollResult } from "../../../../../domains/dice/Dice";
 import { useTextColors } from "../../../../../hooks/useTextColors/useTextColors";
@@ -30,7 +29,6 @@ export const CharacterCard: React.FC<{
 }> = (props) => {
   const { t } = useTranslate();
   const theme = useTheme();
-  const logger = useLogger();
   const width = props.width ?? "100%";
   const characterManager = useCharacter(props.characterSheet);
 
@@ -115,9 +113,6 @@ export const CharacterCard: React.FC<{
                             data-cy="character-card.open-character-sheet"
                             onClick={() => {
                               props.onCharacterDialogOpen?.();
-                              logger.track(
-                                "session.open_character_sheet_from_card"
-                              );
                             }}
                           >
                             <LaunchIcon
@@ -140,9 +135,6 @@ export const CharacterCard: React.FC<{
                             data-cy="character-card.open-character-sheet"
                             onClick={() => {
                               handleSave();
-                              logger.track(
-                                "session.save_character_sheet_from_card"
-                              );
                             }}
                           >
                             <SaveIcon

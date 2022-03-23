@@ -1,7 +1,6 @@
 import Peer from "peerjs";
 import { useEffect, useRef, useState } from "react";
 import { env } from "../../constants/env";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { Id } from "../../domains/Id/Id";
 
 /**
@@ -34,7 +33,6 @@ export function usePeerJS(options: { debug?: boolean }) {
   const [hostId, setHostId] = useState<string | undefined>(undefined);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(undefined);
-  const logger = useLogger();
 
   if (!peer.current) {
     const id = Id.generate();
@@ -58,8 +56,6 @@ export function usePeerJS(options: { debug?: boolean }) {
 
   useEffect(() => {
     function setupPeer() {
-      logger.debug("usePeerJS: Setup");
-
       peer.current?.on("open", onPeerOpenCallback);
       peer.current?.on("disconnected", onPeerDisconnectedCallback);
       peer.current?.on("close", onPeerCloseCallback);
@@ -75,22 +71,18 @@ export function usePeerJS(options: { debug?: boolean }) {
       function onPeerOpenCallback(id: string) {
         setHostId(id);
         setLoading(false);
-        logger.debug("usePeerJS: Connection Opened");
       }
       function onPeerDisconnectedCallback() {
         setHostId(undefined);
         peer.current?.reconnect();
-        logger.debug("usePeerJS: Disconnected. Reconnecting");
       }
       function onPeerCloseCallback() {
         setHostId(undefined);
-        logger.debug("usePeerJS: Connection Closed");
       }
       function onPeerErrorCallback(error: any) {
         if (error.type === "server-error") {
           setError(error);
         }
-        logger.error("usePeerJS: Error", error.type);
       }
     }
 

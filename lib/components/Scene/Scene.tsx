@@ -44,7 +44,6 @@ import { Prompt } from "react-router";
 import { CharactersContext } from "../../contexts/CharactersContext/CharactersContext";
 import { DiceContext } from "../../contexts/DiceContext/DiceContext";
 import { IndexCardCollectionsContext } from "../../contexts/IndexCardCollectionsContext/IndexCardCollectionsContext";
-import { useLogger } from "../../contexts/InjectionsContext/hooks/useLogger";
 import { MyBinderContext } from "../../contexts/MyBinderContext/MyBinderContext";
 import { ScenesContext } from "../../contexts/SceneContext/ScenesContext";
 import { SettingsContext } from "../../contexts/SettingsContext/SettingsContext";
@@ -149,7 +148,6 @@ export const Session: React.FC<IProps> = (props) => {
 
   const theme = useTheme();
   const { t } = useTranslate();
-  const logger = useLogger();
   const diceManager = useContext(DiceContext);
 
   const characterCardWidth = useResponsiveValue({
@@ -350,7 +348,6 @@ export const Session: React.FC<IProps> = (props) => {
                     <IconButton
                       onClick={() => {
                         sessionManager.actions.fireGoodConfetti();
-                        logger.track("session.fire_good_confetti");
                       }}
                       color="primary"
                       size="large"
@@ -395,8 +392,6 @@ export const Session: React.FC<IProps> = (props) => {
                     <IconButton
                       onClick={() => {
                         sessionManager.actions.fireBadConfetti();
-
-                        logger.track("session.fire_fire_confetti");
                       }}
                       color="primary"
                       size="large"
@@ -579,7 +574,6 @@ export const Session: React.FC<IProps> = (props) => {
                           onClick={() => {
                             sessionManager.actions.resetInitiative();
                             sceneManager.actions.resetInitiative();
-                            logger.track("session.reset_initiative");
                           }}
                           variant="contained"
                           color="secondary"
@@ -595,8 +589,6 @@ export const Session: React.FC<IProps> = (props) => {
                               data-cy="scene.add-player"
                               onClick={() => {
                                 handleGMAddNpc();
-
-                                logger.track("session.add_npc");
                               }}
                               variant="contained"
                               color="secondary"
@@ -1120,8 +1112,6 @@ export const Session: React.FC<IProps> = (props) => {
                   } catch (error) {
                     window.open(link, "_blank");
                   }
-
-                  logger.track("session.copy_session_link");
                 }
               }}
               variant="outlined"
@@ -1209,7 +1199,6 @@ export function Scene(props: {
     );
 
   const theme = useTheme();
-  const logger = useLogger();
   const { t } = useTranslate();
 
   const scenesManager = useContext(ScenesContext);
@@ -1327,8 +1316,6 @@ export function Scene(props: {
                     : true;
                   if (confirmed) {
                     sceneManager.actions.addAndSetNewScene();
-
-                    logger.track("session.new_scene");
                   }
                 }}
               >
@@ -1371,7 +1358,6 @@ export function Scene(props: {
                   sceneManager.state.scene as IScene
                 );
                 setSavedSnack(true);
-                logger.track("scene.save");
               }}
             >
               {t("play-route.save-scene")}
@@ -1816,7 +1802,6 @@ export function Scene(props: {
                         endIcon: <AddCircleOutlineIcon />,
                         onClick: () => {
                           sceneManager.actions.addIndexCard(type);
-                          logger.track("scene.add_index_card");
                         },
                       },
                       ...(selectedIndexCardCollection?.indexCards ?? []).map(
