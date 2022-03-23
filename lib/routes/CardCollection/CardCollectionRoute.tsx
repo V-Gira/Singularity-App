@@ -220,9 +220,6 @@ export const CardCollectionRoute: React.FC<{
   const myBinderManager = useContext(MyBinderContext);
 
   useEffect(() => {
-  }, []);
-
-  useEffect(() => {
     const cardToLoad =
       indexCardCollectionsManager.state.indexCardCollections.find(
         (s) => s.id === props.match.params.id
