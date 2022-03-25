@@ -18,6 +18,7 @@ import {
   ISection,
   ISeparatorBlock,
   ISkillBlock,
+  ISkillTrackerBlock,
   ISlotTrackerBlock,
   ITextBlock,
   IV1Character,
@@ -129,6 +130,16 @@ export const CharacterFactory = {
           commands: options.defaultCommands,
         },
       } as IBlock & ISkillBlock,
+      [BlockType.SkillTracker]: {
+        id: Id.generate(),
+        label: "SkillTracker",
+        type: type,
+        value: "0",
+        meta: {
+          checked: undefined,
+          commands: options.defaultCommands,
+        },
+      } as IBlock & ISkillTrackerBlock,
       [BlockType.DicePool]: {
         id: Id.generate(),
         label: "Dice Pool",

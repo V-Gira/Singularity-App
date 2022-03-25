@@ -2,6 +2,7 @@ import {
   IBlock,
   IDicePoolBlock,
   ISkillBlock,
+  ISkillTrackerBlock,
 } from "../../../../../../domains/character/types";
 import {
   CommmandSetOptions,
@@ -14,7 +15,7 @@ export const DiceCommandGroup = {
     return result;
   },
   getCommandSetOptionsFromBlock(
-    block: IBlock & (IDicePoolBlock | ISkillBlock)
+    block: IBlock & (IDicePoolBlock | ISkillBlock | ISkillTrackerBlock)
   ) {
     const result =
       block.meta?.commands?.map((commandId) => {

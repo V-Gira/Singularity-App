@@ -122,6 +122,18 @@ export const AddBlock: React.FC<
         </MenuItem>
         <MenuItem
           onClick={() => {
+            props.onAddBlock(BlockType.SkillTracker);
+            setAnchorEl(undefined);
+          }}
+        >
+          <ListItemIcon>
+            <LibraryAddIcon fontSize="small" />
+          </ListItemIcon>
+
+          <ListItemText primary= "Skill Tracker" />
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
             props.onAddBlock(BlockType.DicePool);
             setAnchorEl(undefined);
           }}

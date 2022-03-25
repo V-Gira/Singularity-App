@@ -4,12 +4,13 @@ import {
   IBlock,
   IDicePoolBlock,
   ISkillBlock,
+  ISkillTrackerBlock,
 } from "../../../../../../domains/character/types";
 import { IRollGroup } from "../../../../../../domains/dice/Dice";
 
 export const BlockSelectors = {
   getRollGroupFromBlock(
-    block: IBlock & (IDicePoolBlock | ISkillBlock)
+    block: IBlock & (IDicePoolBlock | ISkillBlock | ISkillTrackerBlock)
   ): IRollGroup {
     let modifier: number | undefined;
     if (block.type === BlockType.Skill && !block.meta.hideModifier) {

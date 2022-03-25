@@ -4,6 +4,7 @@ export enum BlockType {
   Text = "Text",
   Numeric = "Numeric",
   Skill = "Skill",
+  SkillTracker = "SkillTracker",
   DicePool = "DicePool",
   PointCounter = "PointCounter",
   SlotTracker = "SlotTracker",
@@ -156,6 +157,16 @@ export type ISkillBlock = {
   value: string;
 };
 
+export type ISkillTrackerBlock = {
+  type: BlockType.SkillTracker;
+  meta: IDefaultBlockMeta & {
+    checked?: boolean;
+    commands?: Array<IDiceCommandSetId>;
+    hideModifier?: boolean;
+  };
+  value: string;
+};
+
 export type IDicePoolBlock = {
   type: BlockType.DicePool;
   meta: IDefaultBlockMeta & {
@@ -212,6 +223,7 @@ export type IBlockTypes =
   | ITextBlock
   | INumericBlock
   | ISkillBlock
+  | ISkillTrackerBlock
   | IDicePoolBlock
   | ISlotTrackerBlock
   | IPointCounterBlock

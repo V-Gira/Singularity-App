@@ -25,6 +25,7 @@ import {
 } from "./blocks/BlockPointCounter";
 import { BlockSeparator, BlockSeparatorActions } from "./blocks/BlockSeparator";
 import { BlockSkill, BlockSkillActions } from "./blocks/BlockSkill";
+import { BlockSkillTracker, BlockSkillTrackerActions } from "./blocks/BlockSkillTracker";
 import {
   BlockSlotTracker,
   BlockSlotTrackerActions,
@@ -150,6 +151,18 @@ export function BlockByType(
           onRoll={props.onRoll}
         />
       )}
+      {props.block.type === BlockType.SkillTracker && (
+        <BlockSkillTracker
+          advanced={props.advanced}
+          dataCy={props.dataCy}
+          readonly={props.readonly}
+          block={block}
+          onLabelChange={handleOnLabelChange}
+          onValueChange={handleOnValueChange}
+          onMetaChange={handleOnMetaChange}
+          onRoll={props.onRoll}
+        />
+      )}
       {props.block.type === BlockType.DicePool && (
         <BlockDicePool
           advanced={props.advanced}
@@ -247,6 +260,9 @@ export function BlockByType(
 
         {block.type === BlockType.Skill && (
           <BlockSkillActions block={block} onMetaChange={handleOnMetaChange} />
+        )}
+        {block.type === BlockType.SkillTracker && (
+          <BlockSkillTrackerActions block={block} onMetaChange={handleOnMetaChange} />
         )}
         {block.type === BlockType.DicePool && (
           <BlockDicePoolActions

@@ -6,6 +6,7 @@ import React from "react";
 import {
   IBlock,
   IDicePoolBlock,
+  ISkillTrackerBlock,
   INumericBlock,
   ISkillBlock,
   ITextBlock,
@@ -13,7 +14,7 @@ import {
 
 export function BlockToggleMeta<
   TBlock extends IBlock &
-    (ITextBlock | INumericBlock | ISkillBlock | IDicePoolBlock)
+    (ITextBlock | INumericBlock | ISkillBlock | ISkillTrackerBlock | IDicePoolBlock)
 >(props: {
   readonly: boolean | undefined;
   dataCy: string;
