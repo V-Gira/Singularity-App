@@ -21,7 +21,7 @@ import {
 } from "../../types/IBlockComponentProps";
 import { BlockToggleMeta } from "../BlockToggleMeta";
 import { CircleTextField } from "../CircleTextField";
-import { DiceMenuForCharacterSheet } from "../DiceMenuForCharacterSheet";
+import { DiceSelectorForCharacterSheet } from "../DiceSelectorForCharacterSheet";
 import { Pool } from "./BlockDicePool";
 
 export function BlockSkillTracker(props: IBlockComponentProps<ISkillTrackerBlock>) {
@@ -155,7 +155,7 @@ export function BlockSkillTrackerActions(
   const theme = useTheme();
   const { t } = useTranslate();
 
-  const commands = props.block.meta.commands || [];
+  const commands =  props.block.meta.commands || [];
 
   return (
     <>
@@ -180,7 +180,7 @@ export function BlockSkillTrackerActions(
         </Link>
       </Grid>
       <Grid item>
-        <DiceMenuForCharacterSheet
+        <DiceSelectorForCharacterSheet
           commandSetIds={commands}
           onChange={(newCommandIds) => {
             props.onMetaChange({
@@ -188,7 +188,7 @@ export function BlockSkillTrackerActions(
               commands: newCommandIds,
             });
           }}
-          render={(diceMenuProps) => (
+          render={(diceSelectorProps) => (
             <Tooltip title={commands.join(" + ")}>
               <Link
                 component="button"
@@ -197,10 +197,10 @@ export function BlockSkillTrackerActions(
                   color: theme.palette.primary.main,
                 })}
                 onClick={(e: any) => {
-                  if (!diceMenuProps.open) {
-                    diceMenuProps.openMenu(e);
+                  if (!diceSelectorProps.open) {
+                    diceSelectorProps.openMenu(e);
                   } else {
-                    diceMenuProps.closeMenu();
+                    diceSelectorProps.closeMenu();
                   }
                 }}
                 underline="hover"

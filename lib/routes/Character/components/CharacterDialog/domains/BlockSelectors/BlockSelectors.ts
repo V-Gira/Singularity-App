@@ -13,14 +13,18 @@ export const BlockSelectors = {
     block: IBlock & (IDicePoolBlock | ISkillBlock | ISkillTrackerBlock)
   ): IRollGroup {
     let modifier: number | undefined;
+    let commands = block.meta.commands;
     if (block.type === BlockType.Skill && !block.meta.hideModifier) {
       modifier = parseInt(block.value) || 0;
+    }
+    if (block.type === BlockType.SkillTracker) {
+      commands = Array(parseInt(block.value)).fill(commands);
     }
     return {
       label: previewContentEditable({ value: block.label }),
       modifier: modifier,
       commandSets:
-        block.meta.commands?.map((commandGroupId) => ({
+        commands?.map((commandGroupId) => ({
           id: commandGroupId,
         })) ?? [],
     };
