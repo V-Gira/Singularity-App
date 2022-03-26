@@ -19,7 +19,11 @@ export const BlockSelectors = {
     }
     if (block.type === BlockType.SkillTracker) {
       const value = block.value.filter(x => x.checked).length
+      if (!value) {
+      commands = ["0dC"];
+      } else {
       commands = Array(value).fill(commands);
+      }
     }
     return {
       label: previewContentEditable({ value: block.label }),

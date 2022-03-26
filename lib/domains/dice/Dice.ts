@@ -24,7 +24,8 @@ export type IDiceCommandNames =
   | "1d100"
   | "coin"
   | "card"
-  | "1dC";
+  | "1dC"
+  | "0dC";
 
 export type IDiceCommandSetId = IDiceCommandNames | "4dF" | "2d6";
 
@@ -32,6 +33,14 @@ export const CommmandSetOptions: Record<
   IDiceCommandSetId,
   IDiceCommandSetOption
 > = {
+  "0dC": {
+    id: "0dC",
+    label: "0dC",
+    icon: Icons.Dice6,
+    value: ["0dC", "0dC"],
+    goodRoll: 6,
+    badRoll: 3,
+  },
   "1dC": {
     id: "1dC",
     label: "1dC",
@@ -187,6 +196,10 @@ export const DiceCommandOptions: Record<
     sides: CoinToss,
     formatDetailedResult: formatNormalDie,
   },
+  "0dC": {
+    sides: SixSidedDie,
+    formatDetailedResult: formatNormalDie,
+  },
   "1dC": {
     sides: SixSidedDie,
     formatDetailedResult: formatNormalDie,
@@ -268,7 +281,12 @@ export const Dice = {
                   if (commandName === "1dC" && typeof result === "number") {
                     total = totalWithoutModifiers = rollCharge(result, total);
                     specialListResults = "charge";
-                  } else if (typeof result === "number") {
+                  } 
+                  else if (commandName === "0dC" && typeof result === "number") {
+                    total = totalWithoutModifiers = rollZeroCharge(result, total);
+                    specialListResults = "charge";
+                  } 
+                  else if (typeof result === "number") {
                     total += result;
                     totalWithoutModifiers += result;
                   } else {
@@ -410,6 +428,14 @@ function rollCharge(result: number, total: number) {
   if (total === 6 && result === 6) {
     return 66;
   } else if (result > total) {
+    return result;
+  } else {
+    return total;
+  }
+}
+
+function rollZeroCharge(result: number, total: number) {
+  if (!total || result < total) {
     return result;
   } else {
     return total;

@@ -47,8 +47,9 @@ export function BlockSkillTracker(props: IBlockComponentProps<ISkillTrackerBlock
     (p) => p.blockId === props.block.id
   );
   const numberOfCommands = props.block.meta?.commands?.length ?? 0;
-  const hasSkillPoints = blockValue.filter(x => x.checked).length > 0;
-  const hasCommands = numberOfCommands > 0 && hasSkillPoints;
+  const hasSkillPoints = blockValue.filter(x => x.checked).length > 0
+  // const hasCommands = numberOfCommands > 0 && hasSkillPoints;
+  const hasCommands = numberOfCommands > 0;
   const [firstCommandSet] =
     props.block.meta?.commands?.map((commandId) => {
       return CommmandSetOptions[commandId];
@@ -113,9 +114,10 @@ export function BlockSkillTracker(props: IBlockComponentProps<ISkillTrackerBlock
               </Pool>
             )}
           </Grid>
-          <Grid item xs>
+          <Grid container spacing={1} >
+          <Grid item xs={12} >
             <FateLabel
-              className={css({ display: "inline-block", width: "100%" })}
+              className={css({ display: "inline-block", width: "100%", textAlign: "center" })}
             >
               <ContentEditable
                 data-cy={`${props.dataCy}.label`}
@@ -128,8 +130,11 @@ export function BlockSkillTracker(props: IBlockComponentProps<ISkillTrackerBlock
               />
             </FateLabel>
           </Grid>
-        </Grid>
+          <Grid item xs={12}>
           <SlotTracker />
+          </Grid>
+          </Grid>
+        </Grid>
       </Box>
     </>
   );
@@ -189,7 +194,7 @@ export function BlockSkillTracker(props: IBlockComponentProps<ISkillTrackerBlock
                 wrap="nowrap"
                 spacing={1}
               >
-                {!props.readonly && (
+                {(!props.readonly && props.advanced) && (
                   <Fade in={hover}>
                     <Grid item>
                       <Tooltip
@@ -210,7 +215,7 @@ export function BlockSkillTracker(props: IBlockComponentProps<ISkillTrackerBlock
                   </Fade>
                 )}
                 {renderAsTrack()}
-                {!props.readonly && (
+                {(!props.readonly && props.advanced) && (
                   <Fade in={hover}>
                     <Grid item>
                       <Tooltip
