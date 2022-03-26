@@ -18,7 +18,8 @@ export const BlockSelectors = {
       modifier = parseInt(block.value) || 0;
     }
     if (block.type === BlockType.SkillTracker) {
-      commands = Array(parseInt(block.value)).fill(commands);
+      const value = block.value.filter(x => x.checked).length
+      commands = Array(value).fill(commands);
     }
     return {
       label: previewContentEditable({ value: block.label }),

@@ -134,10 +134,10 @@ export const CharacterFactory = {
         id: Id.generate(),
         label: "SkillTracker",
         type: type,
-        value: "0",
+        value: [{checked: false}, {checked: false}, {checked: false}, {checked: false}],
         meta: {
           checked: undefined,
-          commands: options.defaultCommands,
+          commands: ["1dC"],
         },
       } as IBlock & ISkillTrackerBlock,
       [BlockType.DicePool]: {

@@ -164,7 +164,9 @@ export type ISkillTrackerBlock = {
     commands?: Array<IDiceCommandSetId>;
     hideModifier?: boolean;
   };
-  value: string;
+  value: Array<{
+    checked?: boolean;
+  }>;
 };
 
 export type IDicePoolBlock = {

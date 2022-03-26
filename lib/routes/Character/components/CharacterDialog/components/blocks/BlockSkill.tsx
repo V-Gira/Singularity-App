@@ -77,7 +77,9 @@ export function BlockSkill(props: IBlockComponentProps<ISkillBlock>) {
                 })}
                 onContextMenu={(event) => {
                   event.preventDefault();
-
+                  if (!hasCommands) {
+                    return;
+                  }
                   diceManager.actions.setOptions({ listResults: false });
                   diceManager.actions.addOrRemovePoolElement({
                     blockId: props.block.id,
