@@ -47,7 +47,7 @@ export function BlockSkillTracker(props: IBlockComponentProps<ISkillTrackerBlock
     (p) => p.blockId === props.block.id
   );
   const numberOfCommands = props.block.meta?.commands?.length ?? 0;
-  const hasSkillPoints = blockValue.filter(x => x.checked).length > 0
+  // const hasSkillPoints = blockValue.filter(x => x.checked).length > 0
   // const hasCommands = numberOfCommands > 0 && hasSkillPoints;
   const hasCommands = numberOfCommands > 0;
   const [firstCommandSet] =
@@ -56,7 +56,8 @@ export function BlockSkillTracker(props: IBlockComponentProps<ISkillTrackerBlock
     }) ?? [];
   const rollGroup = BlockSelectors.getRollGroupFromBlock(props.block);
   const shouldDisplayNoCommandsWarning = hasCommands || !props.advanced;
-  const RollIcon = hasSkillPoints ? firstCommandSet?.icon ?? Icons.ThrowDice : Icons.ThrowDice ;
+  // const RollIcon = hasSkillPoints ? firstCommandSet?.icon ?? Icons.ThrowDice : Icons.ThrowDice ;
+  const RollIcon = firstCommandSet?.icon ?? Icons.ThrowDice;
 
   return (
     <>
