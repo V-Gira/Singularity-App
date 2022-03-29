@@ -71,8 +71,6 @@
   "character-dialog.remove-section-confirmation": "Êtes-vous sûr que vous voulez supprimer cette section",
   "character-dialog.save": "Enregistrer",
   "character-dialog.saved": "Enregistré",
-  "character-dialog.skill-block.missing-dice-commands": "",
-  "character-dialog.skill-block.roll": "Rouler",
   "cookie-consent.button": "J'accepte",
   "cookie-consent.description": "Ce site utilise des cookies pour vous fournir une meilleur expérience utilisateur. En utilisant Singularity, vous acceptez notre utilisation des cookies.",
   "data-route.delete": "Supprimer",
@@ -97,7 +95,7 @@
   "data-route.total-size": "Taille totale",
   "data-route.type": "Type",
   "dice-fab.pool": "Lot",
-  "dice-fab.roll": "Rouler",
+  "dice-fab.roll": "Lancer",
   "dice-route.meta.description": "Lancez tous les types de dés à l'aide de ce lanceur à dés équitables.",
   "dice-route.meta.title": "Lancer des dés en ligne",
   "docs.book-of-monsters.description": "Présenté par Seelie Squire, ce document est la ressource ultime si vous cherchez ce qui se rapproche le plus d'un compendium pour Fate.",
@@ -312,5 +310,7 @@
   "story-builder-route.meta.description": "Choisissez des cartes dans les cartes de création d'histoires de Fari pour vous aider à créer des personnages intéressants.",
   "story-builder-route.meta.title": "Générateur d’histoire",
   "story-dice-route.meta.description": "Lancez ces 9 dés d'histoire pour vous aider à créer des histoires étonnantes et intéressantes.",
-  "story-dice-route.meta.title": "Dés d'histoire"
+  "story-dice-route.meta.title": "Dés d'histoire",
+  "character-dialog.skill-block.roll": "Lancer les dés",
+  "character-dialog.skill-block.missing-dice-commands": "Pas de dés sélectionés"
 }

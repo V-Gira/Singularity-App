@@ -102,7 +102,7 @@ export function Toolbox(props: {
                   spacing={2}
                 >
                   {props.rightActions}
-                  <Grid item>
+                  {/* <Grid item>
                     <Tooltip title="Story Builder Decks">
                       <IconButton
                         className={css({
@@ -120,7 +120,7 @@ export function Toolbox(props: {
                         />
                       </IconButton>
                     </Tooltip>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Grid>
             )}{" "}

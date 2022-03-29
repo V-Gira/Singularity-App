@@ -117,7 +117,7 @@ export function BlockSlotTracker(
               wrap="nowrap"
               spacing={1}
             >
-              {!props.readonly && (
+              {(!props.readonly && props.advanced) && (
                 <Fade in={hover}>
                   <Grid item>
                     <Tooltip
@@ -159,7 +159,7 @@ export function BlockSlotTracker(
                   </FateLabel>
                 </Grid>
               )}
-              {!props.readonly && (
+              {(!props.readonly && props.advanced) && (
                 <Fade in={hover}>
                   <Grid item>
                     <Tooltip

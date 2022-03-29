@@ -327,5 +327,7 @@
   "story-builder-route.meta.description": "Pick cards from Fari's Story Builder Decks to help you create interesting characters.",
   "story-builder-route.meta.title": "Story Builder",
   "story-dice-route.meta.description": "Roll those 9 Story Dice to help you create amazing and interesting stories.",
-  "story-dice-route.meta.title": "Story Dice"
+  "story-dice-route.meta.title": "Story Dice",
+  "character-dialog.skill-block.roll": "Roll Dice",
+  "character-dialog.skill-block.missing-dice-commands": "No dice selected"
 }
