@@ -1,6 +1,6 @@
 {
   "name": "singularity",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://singularity-app.netlify.app/",
   "description": "Singularity is a Virtual Tabletop application based on Fari. License: AGPL-3.0-or-later",
   "author": "V-Jira",
