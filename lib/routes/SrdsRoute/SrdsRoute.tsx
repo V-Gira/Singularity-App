@@ -71,11 +71,11 @@ export function SrdItems() {
       <Grid container spacing={4} justifyContent="center">
         <Grid item xs={12} sm={6} md={4}>
           <DocCard
-            title={t("docs.fate-core.title")}
-            description={t("docs.fate-core.description")}
+            title={t("docs.bitd.title")}
+            description={t("docs.bitd.description")}
             bgColor="#00409d"
-            imageUrl={Images.core}
-            link="/srds/core"
+            imageUrl="https://bladesinthedark.com/sites/default/files/inline-images/forged_in_the_dark_logo2_0.png"
+            link="/srds/bitd"
           />
         </Grid>
       </Grid>

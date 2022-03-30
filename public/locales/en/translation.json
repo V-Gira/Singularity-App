@@ -319,9 +319,9 @@
   "player-row.remove-player-confirmation": "Are you sure you want to remove this player?",
   "player-row.show-to-players": "Show To Players",
   "player-row.swap-character-sheet": "Swap Character Sheet",
-  "srds-route.description": "Read and search through the Fate System Reference Documents (SRDs) with ease using Fari, The Fate Companion App",
+  "srds-route.description": "Read and search through System Reference Documents (SRDs) with ease using Fari, The Fate Companion App",
   "srds-route.fate-srds.subtitle": "Getting Started",
-  "srds-route.fate-srds.title": "Fate System Reference Documents",
+  "srds-route.fate-srds.title": "System Reference Documents",
   "srds-route.resources.title": "Wikis & Resources",
   "srds-route.title": "Fate System Reference Documents (SRDs)",
   "story-builder-route.meta.description": "Pick cards from Fari's Story Builder Decks to help you create interesting characters.",
@@ -329,5 +329,7 @@
   "story-dice-route.meta.description": "Roll those 9 Story Dice to help you create amazing and interesting stories.",
   "story-dice-route.meta.title": "Story Dice",
   "character-dialog.skill-block.roll": "Roll Dice",
-  "character-dialog.skill-block.missing-dice-commands": "No dice selected"
+  "character-dialog.skill-block.missing-dice-commands": "No dice selected",
+  "docs.bitd.title": "Blades in the Dark SRD",
+  "docs.bitd.description": "A System Reference Document for Blades in the Dark. Building blocks for all Forged in the Dark games."
 }

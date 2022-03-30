@@ -10,10 +10,10 @@ async function getDoc(getMarkdownPromise: Promise<typeof import("*?url")>) {
  * Import HTML documents generated from the original markdown files by `eleventy`
  */
 export const DocImport = {
-  FateCore: () => {
-    return getDoc(import("../../../_site/docs/fate-core/index.html?url"));
-  },
   FariWiki: () => {
     return getDoc(import("../../../_site/docs/fari-wiki/index.html?url"));
+  },
+  BitD: () => {
+    return getDoc(import("../../../_site/docs/bitd-srd/index.html?url"));
   },
 };

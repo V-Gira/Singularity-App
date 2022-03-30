@@ -329,4 +329,6 @@ export type ITranslationKeys =
   | "story-dice-route.meta.description"
   | "story-dice-route.meta.title"
   | "character-dialog.skill-block.roll"
-  | "character-dialog.skill-block.missing-dice-commands";
+  | "character-dialog.skill-block.missing-dice-commands"
+  | "docs.bitd.title"
+  | "docs.bitd.description";
