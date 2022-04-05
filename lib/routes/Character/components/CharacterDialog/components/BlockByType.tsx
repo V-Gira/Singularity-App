@@ -17,6 +17,7 @@ import { useTranslate } from "../../../../../hooks/useTranslate/useTranslate";
 import { IBlockComponentProps } from "../types/IBlockComponentProps";
 import { BlockDicePool, BlockDicePoolActions } from "./blocks/BlockDicePool";
 import { BlockImage } from "./blocks/BlockImage";
+import { BlockInfoText } from "./blocks/BlockInfoText";
 import { BlockLink, BlockLinkActions } from "./blocks/BlockLink";
 import { BlockNumeric, BlockNumericActions } from "./blocks/BlockNumeric";
 import {
@@ -105,6 +106,18 @@ export function BlockByType(
     <Box my={isSeparatorBlock ? ".5rem" : "0"}>
       {props.block.type === BlockType.Text && (
         <BlockText
+          advanced={props.advanced}
+          dataCy={props.dataCy}
+          readonly={props.readonly}
+          block={block}
+          onLabelChange={handleOnLabelChange}
+          onValueChange={handleOnValueChange}
+          onMetaChange={handleOnMetaChange}
+          onRoll={props.onRoll}
+        />
+      )}
+      {props.block.type === BlockType.InfoText && (
+        <BlockInfoText
           advanced={props.advanced}
           dataCy={props.dataCy}
           readonly={props.readonly}

@@ -11,6 +11,7 @@ import {
   ICharacter,
   IDicePoolBlock,
   IImageBlock,
+  IInfoTextBlock,
   ILinkBlock,
   INumericBlock,
   IPage,
@@ -120,6 +121,15 @@ export const CharacterFactory = {
           checked: undefined,
         },
       } as IBlock & INumericBlock,
+      [BlockType.InfoText]: {
+        id: Id.generate(),
+        label: "Info Text",
+        type: type,
+        value: "",
+        meta: {
+          checked: undefined,
+        },
+      } as IBlock & IInfoTextBlock,
       [BlockType.Skill]: {
         id: Id.generate(),
         label: "Skill",
