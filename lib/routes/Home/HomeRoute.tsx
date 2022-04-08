@@ -314,7 +314,7 @@ export const HomeRoute: React.FC<{}> = () => {
     return (
       <Box>
         <Grid container justifyContent="center" alignItems="flex-start">
-          {/* {isWebRTCSupported() && (
+          {isWebRTCSupported() && (
             <Grid
               item
               xs={12}
@@ -346,9 +346,9 @@ export const HomeRoute: React.FC<{}> = () => {
                 </Box>
               </Box>
             </Grid>
-          )} */}
+          )}
 
-          {/* <Hidden mdDown>
+          <Hidden mdDown>
             <Divider
               orientation="vertical"
               flexItem
@@ -357,7 +357,7 @@ export const HomeRoute: React.FC<{}> = () => {
                 height: "3rem",
               })}
             />
-          </Hidden> */}
+          </Hidden>
 
           <Grid
             item
