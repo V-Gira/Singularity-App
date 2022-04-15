@@ -342,7 +342,7 @@ export const Session: React.FC<IProps> = (props) => {
           }}
           centerActions={
             <>
-              {isGM && props.mode !== SceneMode.Manage && (
+              {/* {isGM && props.mode !== SceneMode.Manage && (
                 <Grid item>
                   <Tooltip title={t("play-route.fire-rainbow-confetti")}>
                     <IconButton
@@ -359,7 +359,7 @@ export const Session: React.FC<IProps> = (props) => {
                     </IconButton>
                   </Tooltip>
                 </Grid>
-              )}
+              )} */}
               {props.mode !== SceneMode.Manage && (
                 <Grid item>
                   <Tooltip title={t("play-route.pause-session")}>
@@ -386,7 +386,7 @@ export const Session: React.FC<IProps> = (props) => {
                 </Grid>
               )}
 
-              {isGM && props.mode !== SceneMode.Manage && (
+              {/* {isGM && props.mode !== SceneMode.Manage && (
                 <Grid item>
                   <Tooltip title={t("play-route.fire-red-confetti")}>
                     <IconButton
@@ -403,7 +403,7 @@ export const Session: React.FC<IProps> = (props) => {
                     </IconButton>
                   </Tooltip>
                 </Grid>
-              )}
+              )} */}
             </>
           }
         />
